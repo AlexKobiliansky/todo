@@ -1,19 +1,23 @@
-import React, {useState} from 'react';
-import List from './components/List/List';
-
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import listSvg from "./assets/img/list.svg";
-import AddList from "./components/AddList/AddList";
-import Tasks from "./components/Tasks/Tasks";
 
-import DB from './assets/db.json'
+import {List, AddList, Tasks} from './components'
+
+
 
 function App() {
-    const [lists, setLists] = useState(
-        DB.lists.map(item => {
-            item.color = DB.colors.filter(color => color.id === item.colorId)[0].name;
-            return item;
-        })
-    );
+    const [lists, setLists] = useState(null)
+    const [colors, setColors] = useState(null)
+
+    useEffect(() => {
+        axios.get('http://localhost:3003/lists?_expand=color&_embed=tasks').then(({data}) => {
+            setLists(data)
+        });
+        axios.get('http://localhost:3003/colors').then(({data}) => {
+            setColors(data)
+        });
+    }, [])
 
     const onAddList = (obj) => {
         const newList = [
@@ -36,18 +40,21 @@ function App() {
             ]}/>
 
 
-            <List
-                items={lists}
-                isRemovable
-                onRemove={(item) => console.log(item)}
-            />
-
-
-            <AddList onAdd={onAddList} colors={DB.colors}/>
-        </div>
-          <div className="todo__tasks">
-            <Tasks />
+            {lists ? (
+                <List
+                    items={lists}
+                    onRemove={id => {
+                        const newLists = lists.filter(item => item.id !== id);
+                        setLists(newLists);
+                    }}
+                    isRemovable
+                />
+            ) : (
+                'Загрузка...'
+            )}
+            <AddList onAdd={onAddList} colors={colors} />
           </div>
+          <div className="todo__tasks">{lists && <Tasks list={lists[1]} />}</div>
       </div>
   );
 }
