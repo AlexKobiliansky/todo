@@ -39,6 +39,7 @@
   border-radius: 4px
   padding: 8px 12px
   width: 100%
+  font-size: 14px
   &:focus
     border-color: #bdbdbd
 
@@ -50,8 +51,20 @@
   padding: 10px 20px
   cursor: pointer
   margin-top: 15px
+  font-size: 14px
   &:hover
     background-color: darken(#4dd599, 7%)
   &:active
     background-color: darken(#4dd599, 10%)
+  &-grey
+    background: #f4f6f8
+    color: #444
+    &:hover
+      background: darken(#f4f6f8, 3%)
+    &:active
+      background: darken(#f4f6f8, 6%)
+  &:disabled
+    background: #d8d8d8
+    pointer-events: none
+
 

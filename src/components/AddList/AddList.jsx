@@ -32,7 +32,7 @@ const AddList = ({colors, onAdd}) => {
         }
         setIsLoading(true);
         axios
-            .post('http://localhost:3001/lists', {
+            .post('http://localhost:3003/lists', {
                 name: inputValue,
                 colorId: selectedColor
             })
@@ -41,6 +41,9 @@ const AddList = ({colors, onAdd}) => {
                 const listObj = { ...data, color: { name: color } };
                 onAdd(listObj);
                 onClose();
+            })
+            .catch(() => {
+                alert('Ошибка при добавлении задачи!')
             })
             .finally(() => {
                 setIsLoading(false);
