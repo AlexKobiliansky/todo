@@ -29,13 +29,23 @@
       "name": "Курс по ReactJS ToDo",
       "colorId": 7,
       "id": 7
+    },
+    {
+      "name": "asdasd",
+      "colorId": 6,
+      "id": 8
+    },
+    {
+      "name": "asdasd",
+      "colorId": 1,
+      "id": 9
     }
   ],
   "tasks": [
     {
       "id": 1,
       "listId": 2,
-      "text": "Изучить JavaScript",
+      "text": "ddd",
       "completed": true
     },
     {
@@ -135,12 +145,6 @@
       "id": 20
     },
     {
-      "listId": 2,
-      "text": "фыв",
-      "completed": false,
-      "id": 21
-    },
-    {
       "listId": 3,
       "text": "asd",
       "completed": false,
@@ -151,6 +155,18 @@
       "text": "sdasdas",
       "completed": false,
       "id": 23
+    },
+    {
+      "listId": 7,
+      "text": "asdasd",
+      "completed": false,
+      "id": 24
+    },
+    {
+      "listId": 8,
+      "text": "asdasd",
+      "completed": false,
+      "id": 25
     }
   ],
   "colors": [

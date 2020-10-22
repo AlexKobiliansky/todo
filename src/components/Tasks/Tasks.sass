@@ -1,4 +1,6 @@
 .tasks
+  &:not(:last-of-type)
+    margin-bottom: 30px
   &__title
     color: #64c4ed
     font-weight: 700
@@ -57,11 +59,39 @@
       display: flex
       align-items: center
       margin-bottom: 15px
-      input
+      &:hover &-actions
+        opacity: 1
+      p
         padding-left: 15px
         border: 0
         font-size: 16px
         width: 100%
+      &-actions
+        display: flex
+        opacity: 0
+        transition: all .15s ease-in-out
+        div
+          display: flex
+          align-items: center
+          justify-content: center
+          width: 32px
+          height: 32px
+          background-color: lighten(#f4f6f8, 2%)
+          border-radius: 6px
+          margin-left: 5px
+          cursor: pointer
+          &:hover
+            background-color: darken(#f4f6f8, 2%)
+            svg
+              opacity: .8
+          svg
+            width: 11px
+            height: 11px
+            opacity: .4
+
+
+
+
     h2
       font-size: 22px
       text-align: center
